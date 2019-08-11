@@ -5,6 +5,7 @@ shopt -s extglob
 NAME=${NAME%%+(/)}
 NAME=${NAME##*/}
 NAME=`printf '%s\n' "$NAME" | sed 's/\./_/g'`
+NAME=`echo $NAME | tr '[:upper:]' '[:lower:]'`
 
 TAG=latest
 HOST=127.0.0.51
