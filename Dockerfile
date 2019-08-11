@@ -30,6 +30,7 @@ RUN chown -R nginx:nginx /srv/app
 
 
 USER root
+RUN sed -i 's/display_errors = Off/display_errors = On/g' /etc/php7/php.ini
 RUN echo "#!/bin/sh -e" >> /usr/sbin/start.sh && \
 echo "/bin/su - postgres -c \"/usr/bin/pg_ctl -D /var/lib/postgresql/data start\"" >> /usr/sbin/start.sh && \
 echo "mkdir -p /run/nginx && /usr/sbin/nginx -g \"daemon on;\"" >> /usr/sbin/start.sh && \
